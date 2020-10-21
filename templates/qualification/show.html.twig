@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qualification{% endblock %}
+
+{% block body %}
+    <h1>Qualification</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ qualification.id }}</td>
+        </tr>
+        <tr>
+            <th>Libelle</th>
+            <td>{{ qualification.libelle }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('qualification_index') }}" class="btn-primary btn">Retour</a>
+
+    <a href="{{ path('qualification_edit', {'id': qualification.id}) }}" class="btn btn-primary">Modifier</a>
+
+    {{ include('qualification/_delete_form.html.twig') }}
+{% endblock %}

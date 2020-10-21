@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des qualifications{% endblock %}
+
+{% block body %}
+    <h1>Liste des qualifications</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Libelle</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for qualification in qualifications %}
+            <tr>
+                <td>{{ qualification.id }}</td>
+                <td>{{ qualification.libelle }}</td>
+                <td>
+                    <a href="{{ path('qualification_show', {'id': qualification.id}) }}"
+                       class="btn-secondary btn">Voir</a>
+                    <a href="{{ path('qualification_edit', {'id': qualification.id}) }}" class="btn btn-secondary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('qualification_new') }}" class="btn btn-primary">Nouveau</a>
+{% endblock %}

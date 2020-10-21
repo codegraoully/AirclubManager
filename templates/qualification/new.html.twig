@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle qualification{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle qualification</h1>
+
+    {{ include('qualification/_form.html.twig') }}
+
+    <a href="{{ path('qualification_index') }}" class="btn-primary btn">Retour</a>
+{% endblock %}

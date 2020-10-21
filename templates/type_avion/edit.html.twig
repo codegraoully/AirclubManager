@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit TypeAvion{% endblock %}
+
+{% block body %}
+    <h1>Edit TypeAvion</h1>
+
+    {{ include('type_avion/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('type_avion_index') }}">back to list</a>
+
+    {{ include('type_avion/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeAvion{% endblock %}
+
+{% block body %}
+    <h1>TypeAvion</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ type_avion.id }}</td>
+        </tr>
+        <tr>
+            <th>Libelle</th>
+            <td>{{ type_avion.libelle }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_avion_index') }}">back to list</a>
+
+    <a href="{{ path('type_avion_edit', {'id': type_avion.id}) }}">edit</a>
+
+    {{ include('type_avion/_delete_form.html.twig') }}
+{% endblock %}

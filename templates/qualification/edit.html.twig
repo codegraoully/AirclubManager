@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier qualification{% endblock %}
+
+{% block body %}
+    <h1>Modifier qualification</h1>
+
+    {{ include('qualification/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('qualification_index') }}" class="btn btn-primary">Retour</a>
+
+    {{ include('qualification/_delete_form.html.twig') }}
+{% endblock %}

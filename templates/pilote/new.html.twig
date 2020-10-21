@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau pilote{% endblock %}
+
+{% block body %}
+    <h1>Nouveau pilote</h1>
+
+    {{ include('pilote/_form.html.twig') }}
+
+    <a href="{{ path('pilote_index') }}" class="btn-primary btn">Retour</a>
+{% endblock %}

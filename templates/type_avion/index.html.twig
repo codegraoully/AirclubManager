@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type d'avion{% endblock %}
+
+{% block body %}
+    <h1>Type d'avion</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Libelle</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for type_avion in type_avions %}
+            <tr>
+                <td>{{ type_avion.id }}</td>
+                <td>{{ type_avion.libelle }}</td>
+                <td>
+                    <a href="{{ path('type_avion_show', {'id': type_avion.id}) }}" class="btn btn-secondary">Voir</a>
+                    <a href="{{ path('type_avion_edit', {'id': type_avion.id}) }}"
+                       class="btn btn-secondary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_avion_new') }}" class="btn btn-primary">Nouvear</a>
+{% endblock %}

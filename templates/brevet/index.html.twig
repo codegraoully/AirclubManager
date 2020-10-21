@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Brevet index{% endblock %}
+
+{% block body %}
+    <h1>Liste des brevets</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Identifiant</th>
+            <th>Libelle</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for brevet in brevets %}
+            <tr>
+                <td>{{ brevet.id }}</td>
+                <td>{{ brevet.libelle }}</td>
+                <td>
+                    <a href="{{ path('brevet_show', {'id': brevet.id}) }}" class="btn btn-secondary">voir</a>
+                    <a href="{{ path('brevet_edit', {'id': brevet.id}) }} " class="btn btn-secondary">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun enregistrement.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('brevet_new') }}" class="btn btn-primary">Nouveau</a>
+{% endblock %}

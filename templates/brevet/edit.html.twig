@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un brevet{% endblock %}
+
+{% block body %}
+    <h1>Modifier un brevet</h1>
+
+    {{ include('brevet/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('brevet_index') }}" class="btn-primary btn">Retour</a>
+
+    {{ include('brevet/_delete_form.html.twig') }}
+{% endblock %}

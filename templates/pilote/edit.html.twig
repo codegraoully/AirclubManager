@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un pilote{% endblock %}
+
+{% block body %}
+    <h1>Modifier un pilote</h1>
+
+    {{ include('pilote/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="btn-group" role="group" aria-label="actions">
+        <a href="{{ path('pilote_index') }}" class="btn btn-primary">Retour</a>
+
+        {{ include('pilote/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

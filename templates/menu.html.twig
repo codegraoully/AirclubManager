@@ -1,0 +1,59 @@
+{% block menu %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ path('home') }}">Airclub Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reservation
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('reservation_index') }}">Lister les reservations</a>
+                        <a class="dropdown-item" href="{{ path('reservation_new') }}">Ajouter une reservation</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Avion
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('avion_index') }}">Lister les avions</a>
+                        <a class="dropdown-item" href="{{ path('avion_new') }}">Ajouter un avion</a>
+                        <a class="dropdown-item" href="{{ path('type_avion_index') }}">Ajouter un type d'avion</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pilote
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('pilote_index') }}">Lister les pilotes</a>
+                        <a class="dropdown-item" href="{{ path('pilote_new') }}">Ajouter un pilote</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('qualification_index') }}">Qualification</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('brevet_index') }}">Brevet</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="{{ path('search') }}" name="search" method="get">
+                <input class="form-control mr-sm-2" type="search" placeholder="Recherche par nom" aria-label="Search"
+                       name="search[pilote]">
+                <input class="btn btn-outline-dark my-2 my-sm-0" type="submit" name="search[research]"
+                       value="Recherche">
+                <input name="_method" value="GET" type="hidden">
+            </form>
+        </div>
+    </nav>
+{% endblock %}

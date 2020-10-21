@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des reservations{% endblock %}
+
+{% block body %}
+    <h1>Liste des reservations</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Duree</th>
+            <th>Pilote</th>
+            <th>Avion</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.dateVol ? reservation.dateVol|date('D d F Y à H:i') : '' }}</td>
+                <td>{{ reservation.dureeVol }}</td>
+                <td>{{ reservation.pilote }}</td>
+                <td>{{ reservation.avion }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="actions">
+
+                        <a href="{{ path('reservation_show', {'id': reservation.id}) }}"
+                           class="btn-secondary btn">Voir</a>
+                        <a href="{{ path('reservation_edit', {'id': reservation.id}) }}" class="btn btn-secondary">Modifier</a>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reservation_new') }}" class="btn btn-primary">Nouvelle réservation</a>
+{% endblock %}

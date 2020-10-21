@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des avions{% endblock %}
+
+{% block body %}
+    <h1>Liste des avions</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Identifiant</th>
+            <th>Immatriculation</th>
+            <th>Nombre de places</th>
+            <th>Heures de vol</th>
+            <th>Prix</th>
+            <th>Type</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for avion in avions %}
+            <tr>
+                <td>{{ avion.id }}</td>
+                <td>{{ avion.immatriculation }}</td>
+                <td>{{ avion.nombrePlaces }}</td>
+                <td>{{ avion.nombreHeuresVol }}</td>
+                <td>{{ avion.prix|format_currency('EUR') }}</td>
+                <td>{{ avion.typeAvion }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="actions">
+                        <a href="{{ path('avion_show', {'id': avion.id}) }}" class="btn btn-secondary">Voir</a>
+                        <a href="{{ path('avion_edit', {'id': avion.id}) }}" class="btn btn-secondary">Modifier</a>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('avion_new') }}" class="btn-primary btn">Nouveau</a>
+{% endblock %}

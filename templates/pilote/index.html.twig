@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pilote index{% endblock %}
+
+{% block body %}
+    <h1>Pilote index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Brevets</th>
+            <th>Qualifications</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pilote in pilotes %}
+            <tr>
+                <td>{{ pilote.id }}</td>
+                <td>{{ pilote.nom }}</td>
+                <td>{{ pilote.prenom }}</td>
+                <td>{{ pilote.brevet|join(', ') }}</td>
+                <td>{{ pilote.qualification|join(', ') }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="actions">
+                        <a href="{{ path('pilote_show', {'id': pilote.id}) }} " class="btn btn-secondary">Voir</a>
+                        <a href="{{ path('pilote_edit', {'id': pilote.id}) }}" class="btn-secondary btn">Modifier</a>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('pilote_new') }}" class="btn-primary btn">Nouveau</a>
+{% endblock %}

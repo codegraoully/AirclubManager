@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypeAvion{% endblock %}
+
+{% block body %}
+    <h1>Create new TypeAvion</h1>
+
+    {{ include('type_avion/_form.html.twig') }}
+
+    <a href="{{ path('type_avion_index') }}">back to list</a>
+{% endblock %}
