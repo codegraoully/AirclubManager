@@ -30,7 +30,7 @@ services:
       - airclubmanager
 
   acm-mariadb:
-    image: mariadb:10.5
+    image: mariadb:10.5.0
     container_name: acm-mariadb
     expose:
       - 3306
