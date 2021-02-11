@@ -16,6 +16,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.nginx.rule=Host(`blog.localhost`)"
       - "traefik.http.routers.nginx.entrypoints=web"
+
   acm-php:
     build:
       context: ./php
@@ -49,6 +50,20 @@ services:
     networks:
       - airclubmanager
 
+  acm-adminer:
+    image: adminer:standalone
+    container_name: acm-adminer
+    restart: always
+    expose:
+      - 8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.acm-adminer.rule=Host(`adminer.localhost`)"
+      - "traefik.http.routers.acm-adminer.entrypoints=web"
+      - "traefik.tcp.services.mariadb-svc.loadbalancer.server.port=8080"
+    networks:
+      - airclubmanager
+
   acm-traefik:
     image: traefik:v2.4
     container_name: acm-traefik
@@ -56,7 +71,6 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
     ports:
       - "80:80"
       - "8080:8080"
